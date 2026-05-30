@@ -1,43 +1,19 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  app:
+  microservicio:
     build: .
-    container_name: microservicio-container
-    restart: always
-
-    environment:
-      APP_ENV: production
-      JAVA_OPTS: "-Xms256m -Xmx512m"
-
+    container_name: microservicio-devops
     ports:
       - "8080:8080"
-
-    volumes:
-      - app-data:/data
-
-    networks:
-      - devops-network
-
-    healthcheck:
-      test: ["CMD", "java", "-version"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
-
+    restart: always
+    environment:
+      - APP_ENV=production
     deploy:
       resources:
         limits:
-          cpus: '0.50'
-          memory: 512M
-        reservations:
-          cpus: '0.25'
+          cpus: "0.50"
           memory: 256M
-
-volumes:
-  app-data:
-
-networks:
-  devops-network:
-    driver: bridge
+        reservations:
+          cpus: "0.25"
+          memory: 128M
