@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  microservicio:
+    build: .
+    container_name: microservicio-devops
+    ports:
+      - "5000:5000"
+    restart: always
+    environment:
+      - ENVIRONMENT=production
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 256M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
