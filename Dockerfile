@@ -1,13 +1,8 @@
-FROM python:3.11-slim
+FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-COPY app/requirements.txt .
+COPY target/*.jar app.jar
 
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY app/ .
-
-EXPOSE 5000
-
-CMD ["python", "main.py"]
+EXPOSE 8080
+CMD ["java", "-cp", "app.jar", "com.devops.App"]

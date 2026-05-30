@@ -1,12 +1,7 @@
 version: 2
 
 updates:
-  - package-ecosystem: "pip"
-    directory: "/app"
-    schedule:
-      interval: "weekly"
-
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: "maven"
     directory: "/"
     schedule:
       interval: "weekly"
